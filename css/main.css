@@ -26,7 +26,7 @@ body {
 }
 .tabs button:first-child { margin-left: 0; }
 .tabs button:last-child { margin-right: 0; }
-.tabs button:hover { background-color: #555; }
+.tabs button:hover { background-color: #666; }
 .tabs button.active { background-color: #444; color: #fff; }
 
 /* Container widget */
@@ -39,4 +39,5 @@ iframe {
   border-radius: 12px;
   width: 100%;
 }
+
 
