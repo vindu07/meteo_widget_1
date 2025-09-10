@@ -17,12 +17,18 @@ body {
   background-color: #333;
   color: #fff;
   border: none;
-  padding: 8px 12px;
+  padding: 12px 20px; /* più grandi */
   border-radius: 12px;
   cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.2s;
 }
 .tabs button:hover {
   background-color: #555;
+}
+.tabs button.active {
+  background-color: #000; /* tab attiva nera */
+  color: #fff;
 }
 
 /* Container widget */
@@ -43,6 +49,7 @@ body {
   border: none;
   background-color: #222;
   color: #fff;
+  font-size: 1rem;
 }
 .search-bar button {
   background-color: #333;
@@ -51,6 +58,7 @@ body {
   padding: 8px 12px;
   border-radius: 12px;
   cursor: pointer;
+  font-size: 1rem;
 }
 .search-bar button:hover {
   background-color: #555;
