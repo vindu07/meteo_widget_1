@@ -34,7 +34,7 @@ body {
   background-color: #555;
 }
 .tabs button.active {
-  background-color: #333; /* tab attiva nera */
+  background-color: #333; /* tab attiva grigia */
   color: #fff;
 }
 
@@ -49,6 +49,7 @@ iframe {
   border-radius: 12px;
   width: 100%;
 }
+
 
 
 
