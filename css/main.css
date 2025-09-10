@@ -10,24 +10,31 @@ body {
 /* Tabs */
 .tabs {
   display: flex;
-  gap: 8px;
   padding: 8px;
 }
 .tabs button {
+  flex: 1; /* tutte le tab occupano uguale spazio */
   background-color: #333;
   color: #fff;
   border: none;
-  padding: 12px 30px; /* più grandi */
+  padding: 12px 0; /* solo padding verticale, larghezza gestita da flex */
   border-radius: 12px;
   cursor: pointer;
   font-size: 1.1rem;
-  transition: background-color 0.5s;
+  transition: background-color 0.2s;
+  margin: 0 4px; /* piccolo spazio tra le tab */
+}
+.tabs button:first-child {
+  margin-left: 0;
+}
+.tabs button:last-child {
+  margin-right: 0;
 }
 .tabs button:hover {
   background-color: #555;
 }
 .tabs button.active {
-  background-color: #000000; /* tab attiva nera */
+  background-color: #1a1a1a; /* tab attiva nera */
   color: #fff;
 }
 
@@ -69,5 +76,3 @@ iframe {
   border-radius: 12px;
   width: 100%;
 }
-
-
