@@ -43,36 +43,10 @@ body {
   padding: 16px;
 }
 
-/* Barra di ricerca */
-.search-bar {
-  display: flex;
-  gap: 8px;
-  padding: 8px;
-}
-.search-bar input {
-  flex: 1;
-  padding: 8px;
-  border-radius: 12px;
-  border: none;
-  background-color: #222;
-  color: #fff;
-  font-size: 1rem;
-}
-.search-bar button {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-.search-bar button:hover {
-  background-color: #555;
-}
 
 /* Iframe arrotondato */
 iframe {
   border-radius: 12px;
   width: 100%;
 }
+
