@@ -14,7 +14,7 @@ body {
 }
 .tabs button {
   flex: 1; /* tutte le tab occupano uguale spazio */
-  background-color: #333;
+  background-color: #111;
   color: #fff;
   border: none;
   padding: 12px 0; /* solo padding verticale, larghezza gestita da flex */
@@ -34,7 +34,7 @@ body {
   background-color: #555;
 }
 .tabs button.active {
-  background-color: #1a1a1a; /* tab attiva nera */
+  background-color: #333; /* tab attiva nera */
   color: #fff;
 }
 
@@ -49,4 +49,5 @@ iframe {
   border-radius: 12px;
   width: 100%;
 }
+
 
