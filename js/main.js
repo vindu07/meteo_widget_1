@@ -1,4 +1,5 @@
-// main.js - versione stabile per GitHub Pages
+// main.js - Meteo modulare funzionante su GitHub Pages
+
 const widgetConfig = {
   daily: {
     title: "Previsioni 7 Giorni",
@@ -20,10 +21,13 @@ const widgetConfig = {
   }
 };
 
-function createWidget(containerId, widget, code = "tonadico_italia_3165571") {
+// Funzione generica per inserire widget
+function createWidget(containerId, widget, code = "tonadico_italy_3165571") {
   const container = document.getElementById(containerId);
   if (!container) return;
+
   const url = widget.template.replace("{code}", code);
+
   container.innerHTML = `
     <h2 class="text-xl font-semibold text-white mb-2">${widget.title}</h2>
     <iframe src="${url}" frameborder="0" scrolling="NO" allowtransparency="true"
@@ -38,10 +42,44 @@ function createWidget(containerId, widget, code = "tonadico_italia_3165571") {
   `;
 }
 
-// Avvio della pagina con widget di default
-document.addEventListener("DOMContentLoaded", () => {
-  createWidget("giorniDiv", widgetConfig.daily);
-  createWidget("orarieDiv", widgetConfig.hourly);
-  createWidget("radarDiv", widgetConfig.radar);
-});
+// Aggiorna tutti i widget
+function updateWidgets(code) {
+  createWidget("giorniDiv", widgetConfig.daily, code);
+  createWidget("orarieDiv", widgetConfig.hourly, code);
+  createWidget("radarDiv", widgetConfig.radar); // radar indipendente
+}
 
+// Funzione GPS per Windy
+function useGPS() {
+  if (!navigator.geolocation) {
+    alert("Geolocalizzazione non supportata");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition((pos) => {
+    const lat = pos.coords.latitude.toFixed(3);
+    const lon = pos.coords.longitude.toFixed(3);
+    widgetConfig.radar.template = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
+    createWidget("radarDiv", widgetConfig.radar);
+  }, () => {
+    alert("Impossibile ottenere la posizione");
+  });
+}
+
+// Eventi al caricamento
+document.addEventListener("DOMContentLoaded", () => {
+  // Widget default
+  updateWidgets("tonadico_italy_3165571");
+
+  // Gestione input ricerca
+  const searchInput = document.getElementById("searchInput");
+  document.getElementById("searchBtn").addEventListener("click", () => {
+    if (searchInput.value.trim() !== "") updateWidgets(searchInput.value.trim());
+  });
+  searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter" && searchInput.value.trim() !== "") updateWidgets(searchInput.value.trim());
+  });
+
+  // Pulsante GPS
+  document.getElementById("gpsBtn").addEventListener("click", useGPS);
+});
