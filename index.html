@@ -4,18 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meteo Tonadico</title>
-  <style>
-    body { background-color: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
-    .tabs { display: flex; gap: 8px; padding: 8px; }
-    .tabs button { background-color: #333; color: #fff; border: none; padding: 8px 12px; border-radius: 12px; cursor: pointer; }
-    .tabs button:hover { background-color: #555; }
-    .widget { padding: 16px; }
-    .search-bar { display: flex; gap: 8px; padding: 8px; }
-    .search-bar input { flex: 1; padding: 8px; border-radius: 12px; border: none; background-color: #222; color: #fff; }
-    .search-bar button { background-color: #333; color: #fff; border: none; padding: 8px 12px; border-radius: 12px; cursor: pointer; }
-    .search-bar button:hover { background-color: #555; }
-    iframe { border-radius: 12px; }
-  </style>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -40,43 +29,5 @@
 
   <!-- Main JS -->
   <script src="main.js"></script>
-  
-  <!-- Abilita tabs e pulsanti GPS/search compatibili con main.js -->
-  <script>
-    // Mostra solo il primo widget all'inizio
-    document.addEventListener("DOMContentLoaded", () => {
-      showWidget('giorniDiv');
-
-      // Pulsante GPS
-      document.getElementById("gpsBtn").addEventListener("click", () => {
-        if (!navigator.geolocation) return alert("Geolocalizzazione non supportata");
-        navigator.geolocation.getCurrentPosition(pos => {
-          const lat = pos.coords.latitude.toFixed(3);
-          const lon = pos.coords.longitude.toFixed(3);
-          widgetConfig.radar.url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
-          createWidget("radarDiv", widgetConfig.radar);
-          showWidget("radarDiv");
-        }, () => alert("Impossibile ottenere la posizione"));
-      });
-
-      // Pulsante ricerca
-      const searchInput = document.getElementById("searchInput");
-      document.getElementById("searchBtn").addEventListener("click", () => {
-        const value = searchInput.value.trim();
-        if (!value) return;
-        const parts = value.split(",");
-        if (parts.length === 2) {
-          const lat = parseFloat(parts[0]);
-          const lon = parseFloat(parts[1]);
-          if (!isNaN(lat) && !isNaN(lon)) {
-            widgetConfig.radar.url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
-            createWidget("radarDiv", widgetConfig.radar);
-            showWidget("radarDiv");
-          } else alert("Formato lat,lon non valido");
-        } else alert("Inserisci lat e lon separati da una virgola, es: 46.180,11.830");
-      });
-    });
-  </script>
-
 </body>
 </html>
