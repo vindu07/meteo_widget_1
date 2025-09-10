@@ -3,19 +3,19 @@ const widgetConfig = {
   daily: {
     title: null,
     url: "https://www.meteoblue.com/it/weather/widget/daily/tonadico_italy_3165571?geoloc=detect&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&coloured=coloured&pictoicon=1&maxtemperature=1&mintemperature=1&windspeed=1&windgust=0&winddirection=1&uv=1&humidity=0&precipitation=1&precipitationprobability=1&spot=0&pressure=0&layout=dark",
-    height: "500px",
+    height: "450px",
     credit: "https://www.meteoblue.com/it/weather/week/index"
   },
   hourly: {
     title: "Previsioni Orarie",
     url: "https://www.meteoblue.com/it/weather/widget/three/tonadico_italy_3165571?geoloc=detect&nocurrent=0&noforecast=0&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image",
-    height: "500px",
+    height: "450px",
     credit: "https://www.meteoblue.com/it/weather/week/index"
   },
   radar: {
     title: "Radar Windy",
     url: "https://embed.windy.com/embed2.html?lat=46.180&lon=11.830&zoom=8&level=surface&overlay=radar&marker=true",
-    height: "500px",
+    height: "450px",
     credit: null
   }
 };
@@ -25,8 +25,9 @@ function createWidget(containerId, widget) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
+  //<h2 class="text-xl font-semibold text-white mb-2">${widget.title}</h2> 
   container.innerHTML = `
-    /* <h2 class="text-xl font-semibold text-white mb-2">${widget.title}</h2> */
+  
     <iframe src="${widget.url}"
       frameborder="0"
       scrolling="NO"
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mostra 7 giorni all'inizio
   showWidget("giorniDiv");
 });
+
 
 
 
