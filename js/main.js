@@ -33,7 +33,7 @@ function createWidget(containerId, widget) {
       scrolling="NO"
       allowtransparency="true"
       sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
-      style="width: 100%; height: ${widget.height};">
+      style="width: 100%; height: ${widget.height}; border-radius: 12px;">
     </iframe>
     ${widget.credit ? `<div style="text-align:center; margin-top:4px; opacity:0.6;">
       <a href="${widget.credit}" target="_blank" rel="noopener" style="color:#ccc; text-decoration:underline;">meteoblue</a>
@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mostra 7 giorni all'inizio
   showWidget("giorniDiv");
 });
+
 
 
 
