@@ -1,3 +1,5 @@
+// main.js originale compatibile
+
 // === CONFIGURAZIONE WIDGET ===
 const widgetConfig = {
   daily: {
@@ -20,27 +22,23 @@ const widgetConfig = {
   }
 };
 
-// === FUNZIONE GENERICA PER CREARE I WIDGET ===
+// === FUNZIONE PER CREARE I WIDGET ===
 function createWidget(containerId, widget) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
   container.innerHTML = `
     <h2 class="text-xl font-semibold text-white mb-2">${widget.title}</h2>
-    <iframe src="${widget.url}" 
-      frameborder="0" 
-      scrolling="NO" 
-      allowtransparency="true" 
-      sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" 
-      style="width:100%; height:${widget.height}; border-radius:12px;">
+    <iframe src="${widget.url}"
+      frameborder="0"
+      scrolling="NO"
+      allowtransparency="true"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+      style="width: 100%; height: ${widget.height};">
     </iframe>
-    ${
-      widget.credit
-        ? `<div class="text-center mt-1 text-sm opacity-60">
-             <a href="${widget.credit}" target="_blank" rel="noopener" class="underline hover:opacity-100">meteoblue</a>
-           </div>`
-        : ""
-    }
+    ${widget.credit ? `<div style="text-align:center; margin-top:4px; opacity:0.6;">
+      <a href="${widget.credit}" target="_blank" rel="noopener" style="color:#ccc; text-decoration:underline;">meteoblue</a>
+    </div>` : ''}
   `;
 }
 
@@ -51,49 +49,40 @@ function showWidget(id) {
   document.getElementById(id).style.display = 'block';
 }
 
-// === AGGIORNA RADAR WINDY CON LAT/LON ===
-function updateRadar(lat, lon) {
-  widgetConfig.radar.url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
-  createWidget("radarDiv", widgetConfig.radar);
-}
-
 // === INIZIALIZZAZIONE PAGINA ===
 document.addEventListener("DOMContentLoaded", () => {
-  // Crea tutti i widget
   createWidget("giorniDiv", widgetConfig.daily);
   createWidget("orarieDiv", widgetConfig.hourly);
   createWidget("radarDiv", widgetConfig.radar);
 
-  // Mostra solo 7 giorni all'inizio
   showWidget("giorniDiv");
 
-  // Pulsante GPS per radar
+  // Pulsante GPS
   document.getElementById("gpsBtn").addEventListener("click", () => {
     if (!navigator.geolocation) return alert("Geolocalizzazione non supportata");
     navigator.geolocation.getCurrentPosition(pos => {
-      updateRadar(pos.coords.latitude.toFixed(3), pos.coords.longitude.toFixed(3));
+      const lat = pos.coords.latitude.toFixed(3);
+      const lon = pos.coords.longitude.toFixed(3);
+      widgetConfig.radar.url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
+      createWidget("radarDiv", widgetConfig.radar);
       showWidget("radarDiv");
     }, () => alert("Impossibile ottenere la posizione"));
   });
 
-  // Barra di ricerca per radar
+  // Pulsante ricerca
   const searchInput = document.getElementById("searchInput");
   document.getElementById("searchBtn").addEventListener("click", () => {
     const value = searchInput.value.trim();
     if (!value) return;
-    // valore può essere lat,lon o codice città se vuoi estendere
     const parts = value.split(",");
     if (parts.length === 2) {
       const lat = parseFloat(parts[0]);
       const lon = parseFloat(parts[1]);
       if (!isNaN(lat) && !isNaN(lon)) {
-        updateRadar(lat, lon);
+        widgetConfig.radar.url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
+        createWidget("radarDiv", widgetConfig.radar);
         showWidget("radarDiv");
-      } else {
-        alert("Formato lat,lon non valido");
-      }
-    } else {
-      alert("Inserisci lat e lon separati da una virgola, es: 46.180,11.830");
-    }
+      } else alert("Formato lat,lon non valido");
+    } else alert("Inserisci lat e lon separati da una virgola, es: 46.180,11.830");
   });
 });
