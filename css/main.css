@@ -1,6 +1,6 @@
 /* Stile generale */
 body {
-  background-color: #111;
+  background-color: #000;
   color: #fff;
   font-family: sans-serif;
   margin: 0;
@@ -13,43 +13,29 @@ body {
   padding: 8px;
 }
 .tabs button {
-  flex: 1; /* tutte le tab occupano uguale spazio */
-  background-color: #000;
+  flex: 1; /* riempiono tutta la larghezza */
+  background-color: #333;
   color: #fff;
   border: none;
-  padding: 12px 0; /* solo padding verticale, larghezza gestita da flex */
+  padding: 12px 0; /* solo verticale */
   border-radius: 12px;
   cursor: pointer;
   font-size: 1.1rem;
   transition: background-color 0.2s;
-  margin: 0 4px; /* piccolo spazio tra le tab */
+  margin: 0 4px;
 }
-.tabs button:first-child {
-  margin-left: 0;
-}
-.tabs button:last-child {
-  margin-right: 0;
-}
-.tabs button:hover {
-  background-color: #555;
-}
-.tabs button.active {
-  background-color: #333; /* tab attiva grigia */
-  color: #fff;
-}
+.tabs button:first-child { margin-left: 0; }
+.tabs button:last-child { margin-right: 0; }
+.tabs button:hover { background-color: #555; }
+.tabs button.active { background-color: #000; color: #fff; }
 
 /* Container widget */
 .widget {
   padding: 16px;
 }
 
-
 /* Iframe arrotondato */
 iframe {
   border-radius: 12px;
   width: 100%;
 }
-
-
-
-
