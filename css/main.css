@@ -1,0 +1,63 @@
+/* Stile generale */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+}
+.tabs button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.tabs button:hover {
+  background-color: #555;
+}
+
+/* Container widget */
+.widget {
+  padding: 16px;
+}
+
+/* Barra di ricerca */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+}
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+  background-color: #222;
+  color: #fff;
+}
+.search-bar button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.search-bar button:hover {
+  background-color: #555;
+}
+
+/* Iframe arrotondato */
+iframe {
+  border-radius: 12px;
+  width: 100%;
+}
