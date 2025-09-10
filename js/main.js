@@ -1,7 +1,7 @@
 // === CONFIGURAZIONE WIDGET ===
 const widgetConfig = {
   daily: {
-    title: "Previsioni 7 Giorni",
+    title: null,
     url: "https://www.meteoblue.com/it/weather/widget/daily/tonadico_italy_3165571?geoloc=detect&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&coloured=coloured&pictoicon=1&maxtemperature=1&mintemperature=1&windspeed=1&windgust=0&winddirection=1&uv=1&humidity=0&precipitation=1&precipitationprobability=1&spot=0&pressure=0&layout=dark",
     height: "500px",
     credit: "https://www.meteoblue.com/it/weather/week/index"
@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mostra 7 giorni all'inizio
   showWidget("giorniDiv");
 });
+
 
 
 
