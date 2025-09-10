@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteo Widget</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <input type="text" id="locationInput" placeholder="Inserisci località..." value="Tonadico">
+      <button id="searchBtn"><img src="img/search.png" alt="Cerca"></button>
+      <button id="gpsBtn"><img src="img/gps.png" alt="GPS"></button>
+    </div>
+
+    <div id="tabs">
+      <div class="tab active" data-target="giorni">7 Giorni</div>
+      <div class="tab" data-target="orarie">Orarie</div>
+      <div class="tab" data-target="radar">Radar</div>
+    </div>
+
+    <div id="content">
+      <div id="giorni" class="tabContent active"></div>
+      <div id="orarie" class="tabContent"></div>
+      <div id="radar" class="tabContent"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
