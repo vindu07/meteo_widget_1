@@ -8,7 +8,7 @@ const widgetConfig = {
   },
   hourly: {
     title: "Previsioni Orarie",
-    url: "https://www.meteoblue.com/it/weather/widget/three/tonadico_italy_3165571?geoloc=detect&nocurrent=0&noforecast=0&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image",
+    url: "https://www.meteoblue.com/it/weather/widget/three/tonadico_italy_3165571?geoloc=detect&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image",
     height: "592px",
     credit: "https://www.meteoblue.com/it/weather/week/index"
   },
@@ -69,3 +69,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mostra 7 giorni all'inizio
   showWidget("giorniDiv");
 });
+
