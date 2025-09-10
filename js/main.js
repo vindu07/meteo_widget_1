@@ -47,6 +47,13 @@ function showWidget(id) {
   const widgets = document.querySelectorAll('.widget');
   widgets.forEach(w => w.style.display = 'none');
   document.getElementById(id).style.display = 'block';
+
+  // Aggiorna tab attiva
+  switch(id) {
+    case 'giorniDiv': setActiveTab(0); break;
+    case 'orarieDiv': setActiveTab(1); break;
+    case 'radarDiv': setActiveTab(2); break;
+  }
 }
 
 // === INIZIALIZZAZIONE PAGINA ===
@@ -86,3 +93,4 @@ document.addEventListener("DOMContentLoaded", () => {
     } else alert("Inserisci lat e lon separati da una virgola, es: 46.180,11.830");
   });
 });
+
