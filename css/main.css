@@ -1,6 +1,6 @@
 /* Stile generale */
 body {
-  background-color: #000;
+  background-color: #222;
   color: #fff;
   font-family: sans-serif;
   margin: 0;
@@ -14,7 +14,7 @@ body {
 }
 .tabs button {
   flex: 1; /* riempiono tutta la larghezza */
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   border: none;
   padding: 12px 0; /* solo verticale */
@@ -27,7 +27,7 @@ body {
 .tabs button:first-child { margin-left: 0; }
 .tabs button:last-child { margin-right: 0; }
 .tabs button:hover { background-color: #555; }
-.tabs button.active { background-color: #000; color: #fff; }
+.tabs button.active { background-color: #444; color: #fff; }
 
 /* Container widget */
 .widget {
@@ -39,3 +39,4 @@ iframe {
   border-radius: 12px;
   width: 100%;
 }
+
