@@ -20,7 +20,7 @@ const widgetConfig = {
   }
 };
 
-function createWidget(containerId, widget, code = "tonadico_italy_3165571") {
+function createWidget(containerId, widget, code = "tonadico_italia_3165571") {
   const container = document.getElementById(containerId);
   if (!container) return;
   const url = widget.template.replace("{code}", code);
@@ -44,3 +44,4 @@ document.addEventListener("DOMContentLoaded", () => {
   createWidget("orarieDiv", widgetConfig.hourly);
   createWidget("radarDiv", widgetConfig.radar);
 });
+
