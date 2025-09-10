@@ -27,7 +27,7 @@ body {
   background-color: #555;
 }
 .tabs button.active {
-  background-color: #000; /* tab attiva nera */
+  background-color: #000000; /* tab attiva nera */
   color: #fff;
 }
 
@@ -69,3 +69,4 @@ iframe {
   border-radius: 12px;
   width: 100%;
 }
+
