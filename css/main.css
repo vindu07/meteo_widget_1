@@ -36,8 +36,12 @@ body {
 
 /* Iframe arrotondato */
 iframe {
+  display: block;
+  width: 100% !important;  /* forza l'adattamento */
+  max-width: 100%;         /* non superare il contenitore */
   border-radius: 12px;
-  width: 100%;
 }
+
+
 
 
