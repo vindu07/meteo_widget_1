@@ -1,5 +1,3 @@
-// main.js originale compatibile
-
 // === CONFIGURAZIONE WIDGET ===
 const widgetConfig = {
   daily: {
@@ -42,7 +40,7 @@ function createWidget(containerId, widget) {
   `;
 }
 
-//evidenzia la tab
+// === MOSTRA UN SOLO WIDGET ALLA VOLTA E SETTA TAB ATTIVA ===
 function setActiveTab(tabIndex) {
   const buttons = document.querySelectorAll('.tabs button');
   buttons.forEach((btn, i) => {
@@ -50,14 +48,11 @@ function setActiveTab(tabIndex) {
   });
 }
 
-
-// === MOSTRA UN SOLO WIDGET ALLA VOLTA ===
 function showWidget(id) {
   const widgets = document.querySelectorAll('.widget');
   widgets.forEach(w => w.style.display = 'none');
   document.getElementById(id).style.display = 'block';
 
-  // Aggiorna tab attiva
   switch(id) {
     case 'giorniDiv': setActiveTab(0); break;
     case 'orarieDiv': setActiveTab(1); break;
@@ -71,9 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
   createWidget("orarieDiv", widgetConfig.hourly);
   createWidget("radarDiv", widgetConfig.radar);
 
+  // Mostra 7 giorni all'inizio
   showWidget("giorniDiv");
-
-  
-
-
-
+});
