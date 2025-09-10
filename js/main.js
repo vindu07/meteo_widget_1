@@ -42,6 +42,15 @@ function createWidget(containerId, widget) {
   `;
 }
 
+//evidenzia la tab
+function setActiveTab(tabIndex) {
+  const buttons = document.querySelectorAll('.tabs button');
+  buttons.forEach((btn, i) => {
+    btn.classList.toggle('active', i === tabIndex);
+  });
+}
+
+
 // === MOSTRA UN SOLO WIDGET ALLA VOLTA ===
 function showWidget(id) {
   const widgets = document.querySelectorAll('.widget');
@@ -93,4 +102,5 @@ document.addEventListener("DOMContentLoaded", () => {
     } else alert("Inserisci lat e lon separati da una virgola, es: 46.180,11.830");
   });
 });
+
 
