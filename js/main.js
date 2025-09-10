@@ -73,34 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showWidget("giorniDiv");
 
-  // Pulsante GPS
-  document.getElementById("gpsBtn").addEventListener("click", () => {
-    if (!navigator.geolocation) return alert("Geolocalizzazione non supportata");
-    navigator.geolocation.getCurrentPosition(pos => {
-      const lat = pos.coords.latitude.toFixed(3);
-      const lon = pos.coords.longitude.toFixed(3);
-      widgetConfig.radar.url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
-      createWidget("radarDiv", widgetConfig.radar);
-      showWidget("radarDiv");
-    }, () => alert("Impossibile ottenere la posizione"));
-  });
+  
 
-  // Pulsante ricerca
-  const searchInput = document.getElementById("searchInput");
-  document.getElementById("searchBtn").addEventListener("click", () => {
-    const value = searchInput.value.trim();
-    if (!value) return;
-    const parts = value.split(",");
-    if (parts.length === 2) {
-      const lat = parseFloat(parts[0]);
-      const lon = parseFloat(parts[1]);
-      if (!isNaN(lat) && !isNaN(lon)) {
-        widgetConfig.radar.url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&zoom=8&level=surface&overlay=radar&marker=true`;
-        createWidget("radarDiv", widgetConfig.radar);
-        showWidget("radarDiv");
-      } else alert("Formato lat,lon non valido");
-    } else alert("Inserisci lat e lon separati da una virgola, es: 46.180,11.830");
-  });
-});
 
 
