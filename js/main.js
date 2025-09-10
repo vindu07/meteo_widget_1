@@ -26,7 +26,7 @@ function createWidget(containerId, widget) {
   if (!container) return;
 
   container.innerHTML = `
-    <h2 class="text-xl font-semibold text-white mb-2">${widget.title}</h2>
+    /* <h2 class="text-xl font-semibold text-white mb-2">${widget.title}</h2> */
     <iframe src="${widget.url}"
       frameborder="0"
       scrolling="NO"
@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mostra 7 giorni all'inizio
   showWidget("giorniDiv");
 });
+
 
 
 
